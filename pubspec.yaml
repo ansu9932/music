@@ -11,25 +11,24 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # State management (code-gen)
+  # State management
   flutter_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
 
   # Audio
   just_audio: ^0.9.40
-  audio_service: ^0.18.15
-  # NOTE: just_audio_background is intentionally NOT used — it conflicts with
-  # audio_service (both own the media session). We use audio_service's
-  # BaseAudioHandler for background playback + OS media controls.
-  # Companion to just_audio: required for audio-focus loss + becoming-noisy
-  # (headphone unplug) handling. Not optional for those requirements.
+  audio_service: ^0.18.14
+  # NOTE: just_audio_background from the brief is intentionally OMITTED — it
+  # conflicts with audio_service (both register a media session), and the
+  # engine requirement explicitly mandates extending BaseAudioHandler, which is
+  # the audio_service approach. audio_session below is the standard companion
+  # required to implement focus-loss + becoming-noisy (headphone unplug) pause.
   audio_session: ^0.1.21
 
   # Networking / metadata
-  dio: ^5.7.0
-  http: ^1.2.2
+  dio: ^5.5.0+1
 
-  # Client-side stream resolution
+  # Client-side stream resolution (fallback only)
   youtube_explode_dart: ^2.3.2
 
   # Local database
@@ -37,20 +36,20 @@ dependencies:
   isar_flutter_libs: ^3.1.0+1
 
   # Artwork + caching
-  cached_network_image: ^3.4.1
+  cached_network_image: ^3.3.1
   flutter_cache_manager: ^3.4.1
 
   # Color palette extraction
-  palette_generator: ^0.3.3+4
+  palette_generator: ^0.3.3+3
 
   # Routing
-  go_router: ^14.2.7
+  go_router: ^14.2.0
 
   # Connectivity
-  connectivity_plus: ^6.0.5
+  connectivity_plus: ^6.0.2
 
   # Models / serialization
-  freezed_annotation: ^2.4.4
+  freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
 
   # Misc
@@ -60,17 +59,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
 
   build_runner: ^2.4.13
-  freezed: ^2.5.7
   riverpod_generator: ^2.4.3
+  freezed: ^2.4.7
+  # Required by Freezed to generate fromJson/toJson on the entities.
+  json_serializable: ^6.7.1
   isar_generator: ^3.1.0+1
-  json_serializable: ^6.8.0
-
   flutter_lints: ^4.0.0
-  leak_tracker: ^10.0.5
 
 flutter:
   uses-material-design: true
