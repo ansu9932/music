@@ -1,0 +1,91 @@
+name: aura_player
+description: "Aura Player — an ultra-minimal, ad-free, cloud-streaming music player for Android & macOS."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management (code-gen)
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Audio
+  just_audio: ^0.9.40
+  audio_service: ^0.18.15
+  # NOTE: just_audio_background is intentionally NOT used — it conflicts with
+  # audio_service (both own the media session). We use audio_service's
+  # BaseAudioHandler for background playback + OS media controls.
+  # Companion to just_audio: required for audio-focus loss + becoming-noisy
+  # (headphone unplug) handling. Not optional for those requirements.
+  audio_session: ^0.1.21
+
+  # Networking / metadata
+  dio: ^5.7.0
+  http: ^1.2.2
+
+  # Client-side stream resolution
+  youtube_explode_dart: ^2.3.2
+
+  # Local database
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
+
+  # Artwork + caching
+  cached_network_image: ^3.4.1
+  flutter_cache_manager: ^3.4.1
+
+  # Color palette extraction
+  palette_generator: ^0.3.3+4
+
+  # Routing
+  go_router: ^14.2.7
+
+  # Connectivity
+  connectivity_plus: ^6.0.5
+
+  # Models / serialization
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+
+  # Misc
+  path_provider: ^2.1.4
+  collection: ^1.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+
+  build_runner: ^2.4.13
+  freezed: ^2.5.7
+  riverpod_generator: ^2.4.3
+  isar_generator: ^3.1.0+1
+  json_serializable: ^6.8.0
+
+  flutter_lints: ^4.0.0
+  leak_tracker: ^10.0.5
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
