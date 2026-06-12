@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/entities/track.dart';
@@ -15,7 +17,7 @@ class DiscoverController extends AsyncNotifier<List<Track>> {
     final cached = await _readCache();
     if (cached != null && cached.isNotEmpty) {
       // Kick off a background refresh without blocking initial render.
-      Future.microtask(refresh);
+      unawaited(Future.microtask(refresh));
       return cached;
     }
     // 2. No cache: fetch fresh.

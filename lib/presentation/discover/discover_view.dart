@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -44,7 +46,7 @@ class _DiscoverViewState extends ConsumerState<DiscoverView> {
 
     if (!mounted) return;
     // Navigate to the Now Playing canvas (shared-element morph via Hero).
-    this.context.push('/now-playing');
+    unawaited(this.context.push('/now-playing'));
     _navigating = false;
   }
 

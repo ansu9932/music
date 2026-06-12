@@ -23,9 +23,9 @@ class AuraPalette with _$AuraPalette {
     required Color muted,
   }) {
     return AuraPalette(
-      dominantArgb: dominant.value,
-      vibrantArgb: vibrant.value,
-      mutedArgb: muted.value,
+      dominantArgb: dominant.toARGB32(),
+      vibrantArgb: vibrant.toARGB32(),
+      mutedArgb: muted.toARGB32(),
     );
   }
 

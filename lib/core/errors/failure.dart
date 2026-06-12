@@ -24,49 +24,47 @@ sealed class Failure {
 /// Network connectivity dropped or a request could not reach the host.
 final class NetworkFailure extends Failure {
   const NetworkFailure([
-    String message = 'Network unavailable',
+    super.message = 'Network unavailable',
     Object? cause,
-  ]) : super(message, kind: FailureKind.network, cause: cause);
+  ]) : super(kind: FailureKind.network, cause: cause);
 }
 
 /// A remote API responded with an error or unexpected payload.
 final class ApiFailure extends Failure {
   const ApiFailure([
-    String message = 'Service unavailable',
+    super.message = 'Service unavailable',
     Object? cause,
-  ]) : super(message, cause: cause);
-
-  final int? statusCode = null;
+  ]) : super(cause: cause);
 }
 
 /// A track could not be resolved to a playable audio stream.
 final class StreamNotFoundFailure extends Failure {
   const StreamNotFoundFailure([
-    String message = 'No playable stream found',
+    super.message = 'No playable stream found',
     Object? cause,
-  ]) : super(message, cause: cause);
+  ]) : super(cause: cause);
 }
 
 /// Audio decoding / playback engine error.
 final class PlaybackFailure extends Failure {
   const PlaybackFailure([
-    String message = 'Playback error',
+    super.message = 'Playback error',
     Object? cause,
-  ]) : super(message, cause: cause);
+  ]) : super(cause: cause);
 }
 
 /// Local storage (Isar) read/write/migration error.
 final class StorageFailure extends Failure {
   const StorageFailure([
-    String message = 'Storage error',
+    super.message = 'Storage error',
     Object? cause,
-  ]) : super(message, cause: cause);
+  ]) : super(cause: cause);
 }
 
 /// Catch-all for unexpected, otherwise-unclassified errors.
 final class UnknownFailure extends Failure {
   const UnknownFailure([
-    String message = 'Something went wrong',
+    super.message = 'Something went wrong',
     Object? cause,
-  ]) : super(message, cause: cause);
+  ]) : super(cause: cause);
 }

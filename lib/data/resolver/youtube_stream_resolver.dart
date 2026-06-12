@@ -1,6 +1,9 @@
 import 'dart:async';
 
-import 'package:youtube_explode_dart/youtube_explode_dart.dart';
+// youtube_explode_dart also exports a `StreamInfo` type which collides with
+// Aura's domain entity of the same name; hide it so every `StreamInfo`
+// reference in this file resolves to lib/domain/entities/stream_info.dart.
+import 'package:youtube_explode_dart/youtube_explode_dart.dart' hide StreamInfo;
 
 import '../../core/errors/failure.dart';
 import '../../core/errors/result.dart';

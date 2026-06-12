@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+// `RepeatMode` is exported by both flutter/material.dart and our
+// domain/play_queue.dart; hide material's so RepeatMode resolves to the domain.
+import 'package:flutter/material.dart' hide RepeatMode;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../application/providers/audio_providers.dart';

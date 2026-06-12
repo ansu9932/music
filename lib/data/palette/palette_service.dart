@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:flutter/painting.dart';
 import 'package:palette_generator/palette_generator.dart';
 
 import '../../domain/entities/aura_palette.dart';
